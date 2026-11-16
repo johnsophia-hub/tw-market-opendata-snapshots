@@ -1,0 +1,46 @@
+{
+  "source": "TWSE-TWTAWU",
+  "url": "https://openapi.twse.com.tw/v1/exchangeReport/TWTAWU",
+  "dataset": "https://data.gov.tw/dataset/11677",
+  "license": "https://data.gov.tw/license",
+  "attribution": {
+    "provider": "金融監督管理委員會證券期貨局",
+    "publisher": "臺灣證券交易所",
+    "year": "2026",
+    "dataset_title": "盤後資訊 > 暫停交易證券",
+    "release": "OpenAPI 快照，未標示資料集版號",
+    "notice": "此開放資料依政府資料開放授權條款第 1 版釋出，遵守條款即可利用。"
+  },
+  "date_kind": "halt_and_resumption",
+  "payload_dates": {
+    "TradingHaltDate": [
+      "2026-11-10"
+    ],
+    "TradingResumptionDate": [
+      "2026-11-11"
+    ]
+  },
+  "observed_date_taipei": "2026-11-16",
+  "bytes": 170,
+  "sha256": "14ee8e4457fbc9e9c69635cc576a3341dec33159138721ddaf98ec0da7327f3d",
+  "rows": 1,
+  "fields": [
+    "Number",
+    "Code",
+    "Name",
+    "TradingHaltDate",
+    "TradingHaltTime",
+    "TradingResumptionDate",
+    "TradingResumptionTime"
+  ],
+  "raw_path": "observations/2026-11-16/TWSE-TWTAWU/14ee8e4457fbc9e9c69635cc576a3341dec33159138721ddaf98ec0da7327f3d.json",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-11-16T04:38:49.579702+00:00",
+  "headers": {
+    "date": "Mon, 16 Nov 2026 04:38:49 GMT",
+    "last-modified": "Sun, 15 Nov 2026 21:23:01 GMT",
+    "etag": "\"6afa22b5-aa\"",
+    "content-type": "application/json",
+    "content-length": "170"
+  }
+}
