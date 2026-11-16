@@ -1,0 +1,76 @@
+name: Capture official open-data snapshots
+
+# 每天抓證交所與櫃買中心 OpenAPI（政府開放資料）的最新快照，把 HTTP JSON 原始位元組存進這個儲存庫。
+# OpenAPI 只提供最新一期，漏一天就補不回來，所以一天排三次；同一份內容的檔名相同（檔名是 SHA-256），重複的不會再存。
+# 只對 scripts/capture.py 裡列出的 OpenAPI 端點送 GET，不抓兩個網站的報表頁或查詢介面。
+on:
+  schedule:
+    - cron: "40 12 * * *"   # 台灣時間 20:40
+    - cron: "40 15 * * *"   # 台灣時間 23:40
+    - cron: "40 23 * * *"   # 台灣時間隔天 07:40
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: capture
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    name: Capture and archive
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Capture into an empty directory
+        id: capture
+        run: |
+          set +e
+          python3 -I scripts/capture.py "$RUNNER_TEMP/out"
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Add new files, never overwrite
+        run: |
+          [ -d "$RUNNER_TEMP/out" ] || { echo "nothing captured"; exit 0; }
+          cd "$RUNNER_TEMP/out"
+          find . -type f -name '*.json' ! -name '*.meta.json' | sort | while read -r raw; do
+            dest="$GITHUB_WORKSPACE/$raw"
+            if [ -e "$dest" ]; then
+              cmp -s "$raw" "$dest" || { echo "::error::same path, different bytes: $raw"; exit 1; }
+              echo "already archived: $raw"
+            else
+              mkdir -p "$(dirname "$dest")"
+              cp "$raw" "$dest"
+              cp "${raw%.json}.meta.json" "${dest%.json}.meta.json"
+              echo "new: $raw"
+            fi
+          done
+
+      - name: Verify archived bytes against their file names
+        run: |
+          status=0
+          for raw in $(find snapshots observations -type f -name '*.json' ! -name '*.meta.json' 2>/dev/null); do
+            want="$(basename "$raw" .json)"; got="$(sha256sum "$raw" | cut -d' ' -f1)"
+            [ "$want" = "$got" ] || { echo "::error::hash mismatch: $raw"; status=1; }
+          done
+          exit $status
+
+      - name: Commit and push
+        run: |
+          git add -A snapshots observations 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no new files"
+          else
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: capture $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+
+      - name: Fail when any endpoint failed
+        if: steps.capture.outputs.exit != '0'
+        run: |
+          echo "::error::one or more endpoints failed; see the capture step log"
+          exit 1
