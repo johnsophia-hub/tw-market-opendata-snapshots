@@ -35,39 +35,49 @@ jobs:
 
       - name: Add new files, never overwrite
         run: |
+          : > "$RUNNER_TEMP/added.txt"
           [ -d "$RUNNER_TEMP/out" ] || { echo "nothing captured"; exit 0; }
           cd "$RUNNER_TEMP/out"
-          find . -type f -name '*.json' ! -name '*.meta.json' | sort | while read -r raw; do
-            dest="$GITHUB_WORKSPACE/$raw"
+          find . -type f -name '*.json' ! -name '*.meta.json' | sort > "$RUNNER_TEMP/raw.txt"
+          while read -r raw; do
+            raw="${raw#./}"; meta="${raw%.json}.meta.json"
+            [ -f "$meta" ] || { echo "::error::captured file has no sidecar: $raw"; exit 1; }
+            dest="$GITHUB_WORKSPACE/$raw"; dest_meta="$GITHUB_WORKSPACE/$meta"
             if [ -e "$dest" ]; then
               cmp -s "$raw" "$dest" || { echo "::error::same path, different bytes: $raw"; exit 1; }
-              echo "already archived: $raw"
+              [ -f "$dest_meta" ] || { echo "::error::archived file has no sidecar: $raw"; exit 1; }
+              echo "already archived (keeping the original capture time): $raw"
             else
+              [ ! -e "$dest_meta" ] || { echo "::error::sidecar exists without its file: $meta"; exit 1; }
               mkdir -p "$(dirname "$dest")"
               cp "$raw" "$dest"
-              cp "${raw%.json}.meta.json" "${dest%.json}.meta.json"
+              cp "$meta" "$dest_meta"
+              printf '%s\n%s\n' "$raw" "$meta" >> "$RUNNER_TEMP/added.txt"
               echo "new: $raw"
             fi
-          done
+          done < "$RUNNER_TEMP/raw.txt"
 
-      - name: Verify archived bytes against their file names
+      - name: Verify every archived file against its name and its sidecar
         run: |
           status=0
-          for raw in $(find snapshots observations -type f -name '*.json' ! -name '*.meta.json' 2>/dev/null); do
+          while read -r raw; do
             want="$(basename "$raw" .json)"; got="$(sha256sum "$raw" | cut -d' ' -f1)"
             [ "$want" = "$got" ] || { echo "::error::hash mismatch: $raw"; status=1; }
-          done
+            [ -f "${raw%.json}.meta.json" ] || { echo "::error::no sidecar: $raw"; status=1; }
+          done < <(find snapshots observations -type f -name '*.json' ! -name '*.meta.json' 2>/dev/null | sort)
+          while read -r meta; do
+            [ -f "${meta%.meta.json}.json" ] || { echo "::error::sidecar without its file: $meta"; status=1; }
+          done < <(find snapshots observations -type f -name '*.meta.json' 2>/dev/null | sort)
           exit $status
 
-      - name: Commit and push
+      - name: Commit and push only the files added in this run
         run: |
-          git add -A snapshots observations 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "no new files"
-          else
-            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: capture $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
-          fi
+          if [ ! -s "$RUNNER_TEMP/added.txt" ]; then echo "no new files"; exit 0; fi
+          git add --pathspec-from-file="$RUNNER_TEMP/added.txt"
+          git diff --cached --name-only | sort > "$RUNNER_TEMP/staged.txt"
+          sort "$RUNNER_TEMP/added.txt" | cmp -s - "$RUNNER_TEMP/staged.txt" || { echo "::error::staged files differ from the files added in this run"; exit 1; }
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: capture $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
 
       - name: Fail when any endpoint failed
         if: steps.capture.outputs.exit != '0'
