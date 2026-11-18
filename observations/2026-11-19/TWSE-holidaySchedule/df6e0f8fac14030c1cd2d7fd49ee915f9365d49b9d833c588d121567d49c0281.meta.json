@@ -1,0 +1,68 @@
+{
+  "source": "TWSE-holidaySchedule",
+  "url": "https://openapi.twse.com.tw/v1/holidaySchedule/holidaySchedule",
+  "dataset": "https://data.gov.tw/dataset/11761",
+  "license": "https://data.gov.tw/license",
+  "attribution": {
+    "provider": "金融監督管理委員會證券期貨局",
+    "publisher": "臺灣證券交易所",
+    "year": "2026",
+    "dataset_title": "有價證券集中交易市場開（休）市日期",
+    "release": "OpenAPI 快照，未標示資料集版號",
+    "notice": "此開放資料依政府資料開放授權條款第 1 版釋出，遵守條款即可利用。"
+  },
+  "date_kind": "calendar_date",
+  "payload_dates": {
+    "Date": [
+      "2027-01-01",
+      "2027-01-04",
+      "2027-02-01",
+      "2027-02-02",
+      "2027-02-03",
+      "2027-02-04",
+      "2027-02-05",
+      "2027-02-06",
+      "2027-02-07",
+      "2027-02-08",
+      "2027-02-09",
+      "2027-02-10",
+      "2027-02-11",
+      "2027-02-28",
+      "2027-03-01",
+      "2027-04-04",
+      "2027-04-05",
+      "2027-04-06",
+      "2027-04-30",
+      "2027-05-01",
+      "2027-06-09",
+      "2027-09-15",
+      "2027-09-28",
+      "2027-10-10",
+      "2027-10-11",
+      "2027-10-25",
+      "2027-12-24",
+      "2027-12-25",
+      "2027-12-31"
+    ]
+  },
+  "observed_date_taipei": "2026-11-19",
+  "bytes": 4538,
+  "sha256": "df6e0f8fac14030c1cd2d7fd49ee915f9365d49b9d833c588d121567d49c0281",
+  "rows": 29,
+  "fields": [
+    "Name",
+    "Date",
+    "Weekday",
+    "Description"
+  ],
+  "raw_path": "observations/2026-11-19/TWSE-holidaySchedule/df6e0f8fac14030c1cd2d7fd49ee915f9365d49b9d833c588d121567d49c0281.json",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-11-18T22:58:48.603084+00:00",
+  "headers": {
+    "date": "Wed, 18 Nov 2026 22:58:48 GMT",
+    "last-modified": "Wed, 18 Nov 2026 21:23:50 GMT",
+    "etag": "\"6afe1766-11ba\"",
+    "content-type": "application/json",
+    "content-length": "4538"
+  }
+}
