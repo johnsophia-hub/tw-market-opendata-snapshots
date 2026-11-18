@@ -1,0 +1,57 @@
+{
+  "source": "TPEx-exright_daily",
+  "url": "https://www.tpex.org.tw/openapi/v1/tpex_exright_daily",
+  "dataset": "https://data.gov.tw/dataset/11633",
+  "license": "https://data.gov.tw/license",
+  "attribution": {
+    "provider": "金融監督管理委員會證券期貨局",
+    "publisher": "證券櫃檯買賣中心",
+    "year": "2026",
+    "dataset_title": "上櫃股票除權除息計算結果表",
+    "release": "OpenAPI 快照，未標示資料集版號",
+    "notice": "此開放資料依政府資料開放授權條款第 1 版釋出，遵守條款即可利用。"
+  },
+  "date_kind": "ex_date",
+  "payload_dates": {
+    "Date": [
+      "2026-11-18"
+    ]
+  },
+  "observed_date_taipei": "2026-11-18",
+  "bytes": 4050,
+  "sha256": "b41842117962e520d26ccdbd50d847920e8e232454160528598658aa25e5f9ca",
+  "rows": 6,
+  "fields": [
+    "Date",
+    "SecuritiesCompanyCode",
+    "CompanyName",
+    "ClosePriceBeforeExRightsDiviend",
+    "ExRightsDiviendQuote",
+    "StockDividend",
+    "CashDividend",
+    "StockDividendPlusCashDividend",
+    "ExRightsDiviend",
+    "LimitUp",
+    "LimitDown",
+    "OpeningReferencePrice",
+    "DividendDeductedQuote",
+    "CashDivdend",
+    "StockDivdendThousandShares",
+    "CashCapitalIncreaseShares",
+    "SubscriptionPricePerShare",
+    "AllocatedForPublicUnderwriting",
+    "SubscribedByEmployees",
+    "SubscribedByExistingShareholders",
+    "SubscribedProRataThousandShares"
+  ],
+  "raw_path": "observations/2026-11-18/TPEx-exright_daily/b41842117962e520d26ccdbd50d847920e8e232454160528598658aa25e5f9ca.json",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-11-18T15:48:06.743534+00:00",
+  "headers": {
+    "date": "Wed, 18 Nov 2026 15:48:06 GMT",
+    "last-modified": "Wed, 18 Nov 2026 15:30:12 GMT",
+    "etag": "\"6afdc484-fd2\"",
+    "content-type": "application/json",
+    "content-length": "4050"
+  }
+}

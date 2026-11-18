@@ -1,0 +1,57 @@
+{
+  "source": "TPEx-3insti_daily_trading",
+  "url": "https://www.tpex.org.tw/openapi/v1/tpex_3insti_daily_trading",
+  "dataset": "https://data.gov.tw/dataset/11856",
+  "license": "https://data.gov.tw/license",
+  "attribution": {
+    "provider": "金融監督管理委員會證券期貨局",
+    "publisher": "證券櫃檯買賣中心",
+    "year": "2026",
+    "dataset_title": "上櫃股票三大法人買賣明細資訊",
+    "release": "OpenAPI 快照，未標示資料集版號",
+    "notice": "此開放資料依政府資料開放授權條款第 1 版釋出，遵守條款即可利用。"
+  },
+  "date_kind": "trade_date",
+  "payload_dates": {
+    "Date": [
+      "2026-11-18"
+    ]
+  },
+  "observed_date_taipei": "2026-11-18",
+  "bytes": 852970,
+  "sha256": "0da8526a5ff567e58d6d71b820d1f77383a38a623645123e244c50dad4026828",
+  "rows": 899,
+  "fields": [
+    "Date",
+    "SecuritiesCompanyCode",
+    "CompanyName",
+    "Foreign Investors include Mainland Area Investors (Foreign Dealers excluded)-Total Buy",
+    " Foreign Investors include Mainland Area Investors (Foreign Dealers excluded)-Total Sell",
+    "Foreign Investors include Mainland Area Investors (Foreign Dealers excluded)-Difference",
+    "Foreign Dealers-Total Buy",
+    "Foreign Dealers-TotalSell",
+    "ForeignDealers-Difference",
+    "ForeignInvestorsIncludeMainlandAreaInvestors-TotalBuy",
+    "ForeignInvestorsIncludeMainlandAreaInvestors-TotalSell",
+    "ForeignInvestorsInclude MainlandAreaInvestors-Difference",
+    "SecuritiesInvestmentTrustCompanies-TotalBuy",
+    "SecuritiesInvestmentTrustCompanies-TotalSell",
+    "SecuritiesInvestmentTrustCompanies-Difference",
+    "Dealers-TotalBuy",
+    "Dealers-TotalSell",
+    "Dealers-Difference",
+    "Dealers -TotalSell",
+    "TotalDifference"
+  ],
+  "trade_date": "2026-11-18",
+  "raw_path": "snapshots/2026-11-18/TPEx-3insti_daily_trading/0da8526a5ff567e58d6d71b820d1f77383a38a623645123e244c50dad4026828.json",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-11-18T15:48:09.728693+00:00",
+  "headers": {
+    "date": "Wed, 18 Nov 2026 15:48:07 GMT",
+    "last-modified": "Wed, 18 Nov 2026 15:30:17 GMT",
+    "etag": "\"6afdc489-d03ea\"",
+    "content-type": "application/json",
+    "content-length": "852970"
+  }
+}
