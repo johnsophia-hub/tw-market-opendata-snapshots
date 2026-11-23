@@ -1,0 +1,53 @@
+{
+  "source": "TPEx-mainboard_quotes",
+  "url": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes",
+  "dataset": "https://data.gov.tw/dataset/11371",
+  "license": "https://data.gov.tw/license",
+  "attribution": {
+    "provider": "金融監督管理委員會證券期貨局",
+    "publisher": "證券櫃檯買賣中心",
+    "year": "2026",
+    "dataset_title": "上櫃股票收盤行情",
+    "release": "OpenAPI 快照，未標示資料集版號",
+    "notice": "此開放資料依政府資料開放授權條款第 1 版釋出，遵守條款即可利用。"
+  },
+  "date_kind": "trade_date",
+  "payload_dates": {
+    "Date": [
+      "2026-11-23"
+    ]
+  },
+  "observed_date_taipei": "2026-11-23",
+  "bytes": 359445,
+  "sha256": "b757718e2cc5328cbffadfb2ab0f0bc3f0c8ae251964d86f5d3e6b7ce877c245",
+  "rows": 1020,
+  "fields": [
+    "Date",
+    "SecuritiesCompanyCode",
+    "CompanyName",
+    "Close",
+    "Change",
+    "Open",
+    "High",
+    "Low",
+    "TradingShares",
+    "TransactionAmount",
+    "TransactionNumber",
+    "LatestBidPrice",
+    "LatesAskPrice",
+    "Capitals",
+    "NextLimitUp",
+    "NextLimitDown"
+  ],
+  "trade_date": "2026-11-23",
+  "raw_path": "snapshots/2026-11-23/TPEx-mainboard_quotes/b757718e2cc5328cbffadfb2ab0f0bc3f0c8ae251964d86f5d3e6b7ce877c245.json",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-11-23T14:56:14.859580+00:00",
+  "headers": {
+    "date": "Mon, 23 Nov 2026 14:56:14 GMT",
+    "last-modified": "Mon, 23 Nov 2026 14:00:06 GMT",
+    "etag": "\"6b0446e6-57c15\"",
+    "content-type": "application/json",
+    "content-length": "359445"
+  }
+}
