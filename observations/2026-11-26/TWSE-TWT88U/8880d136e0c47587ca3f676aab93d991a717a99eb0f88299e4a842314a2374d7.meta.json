@@ -1,0 +1,51 @@
+{
+  "source": "TWSE-TWT88U",
+  "url": "https://openapi.twse.com.tw/v1/exchangeReport/TWT88U",
+  "dataset": "https://data.gov.tw/dataset/11659",
+  "license": "https://data.gov.tw/license",
+  "attribution": {
+    "provider": "金融監督管理委員會證券期貨局",
+    "publisher": "臺灣證券交易所",
+    "year": "2026",
+    "dataset_title": "升降幅度/首五日無漲跌幅 > 首五日無漲跌幅",
+    "release": "OpenAPI 快照，未標示資料集版號",
+    "notice": "此開放資料依政府資料開放授權條款第 1 版釋出，遵守條款即可利用。"
+  },
+  "date_kind": "first_five_trading_days",
+  "payload_dates": {
+    "1stTradingDate": [
+      "2026-10-30"
+    ],
+    "5thTradingDate": [
+      "2026-11-05"
+    ]
+  },
+  "observed_date_taipei": "2026-11-26",
+  "bytes": 1365,
+  "sha256": "8880d136e0c47587ca3f676aab93d991a717a99eb0f88299e4a842314a2374d7",
+  "rows": 5,
+  "fields": [
+    "SecurCode",
+    "SecurName",
+    "1stTradingDate",
+    "5thTradingDate",
+    "PriceUnderwritten",
+    "OverAllotmentShares",
+    "Code",
+    "Name",
+    "BuySell",
+    "TradingPrice",
+    "TradingVolume",
+    "AccTradingVolume"
+  ],
+  "raw_path": "observations/2026-11-26/TWSE-TWT88U/8880d136e0c47587ca3f676aab93d991a717a99eb0f88299e4a842314a2374d7.json",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-11-25T21:42:01.395925+00:00",
+  "headers": {
+    "date": "Wed, 25 Nov 2026 21:42:01 GMT",
+    "last-modified": "Wed, 25 Nov 2026 21:21:56 GMT",
+    "etag": "\"6b075174-555\"",
+    "content-type": "application/json",
+    "content-length": "1365"
+  }
+}
