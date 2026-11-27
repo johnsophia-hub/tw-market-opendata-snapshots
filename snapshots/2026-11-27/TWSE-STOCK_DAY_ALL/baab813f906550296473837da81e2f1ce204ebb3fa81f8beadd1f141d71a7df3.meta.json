@@ -1,0 +1,48 @@
+{
+  "source": "TWSE-STOCK_DAY_ALL",
+  "url": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL",
+  "dataset": "https://data.gov.tw/dataset/11549",
+  "license": "https://data.gov.tw/license",
+  "attribution": {
+    "provider": "金融監督管理委員會證券期貨局",
+    "publisher": "臺灣證券交易所",
+    "year": "2026",
+    "dataset_title": "盤後資訊 > 個股日成交資訊",
+    "release": "OpenAPI 快照，未標示資料集版號",
+    "notice": "此開放資料依政府資料開放授權條款第 1 版釋出，遵守條款即可利用。"
+  },
+  "date_kind": "trade_date",
+  "payload_dates": {
+    "Date": [
+      "2026-11-27"
+    ]
+  },
+  "observed_date_taipei": "2026-11-28",
+  "bytes": 321880,
+  "sha256": "baab813f906550296473837da81e2f1ce204ebb3fa81f8beadd1f141d71a7df3",
+  "rows": 1395,
+  "fields": [
+    "Date",
+    "Code",
+    "Name",
+    "TradeVolume",
+    "TradeValue",
+    "OpeningPrice",
+    "HighestPrice",
+    "LowestPrice",
+    "ClosingPrice",
+    "Change",
+    "Transaction"
+  ],
+  "trade_date": "2026-11-27",
+  "raw_path": "snapshots/2026-11-27/TWSE-STOCK_DAY_ALL/baab813f906550296473837da81e2f1ce204ebb3fa81f8beadd1f141d71a7df3.json",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-11-27T21:33:29.662082+00:00",
+  "headers": {
+    "date": "Fri, 27 Nov 2026 21:33:28 GMT",
+    "last-modified": "Fri, 27 Nov 2026 21:20:45 GMT",
+    "etag": "\"6b09f42d-4e958\"",
+    "content-type": "application/json",
+    "content-length": "321880"
+  }
+}

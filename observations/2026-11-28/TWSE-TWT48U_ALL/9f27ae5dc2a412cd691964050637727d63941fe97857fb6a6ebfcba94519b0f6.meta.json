@@ -1,0 +1,60 @@
+{
+  "source": "TWSE-TWT48U_ALL",
+  "url": "https://openapi.twse.com.tw/v1/exchangeReport/TWT48U_ALL",
+  "dataset": "https://data.gov.tw/dataset/89748",
+  "license": "https://data.gov.tw/license",
+  "attribution": {
+    "provider": "金融監督管理委員會證券期貨局",
+    "publisher": "臺灣證券交易所",
+    "year": "2026",
+    "dataset_title": "上市股票除權除息預告表",
+    "release": "OpenAPI 快照，未標示資料集版號",
+    "notice": "此開放資料依政府資料開放授權條款第 1 版釋出，遵守條款即可利用。"
+  },
+  "date_kind": "ex_date",
+  "payload_dates": {
+    "Date": [
+      "2026-11-26",
+      "2026-11-27",
+      "2026-11-30",
+      "2026-12-01",
+      "2026-12-02",
+      "2026-12-03",
+      "2026-12-04",
+      "2026-12-07",
+      "2026-12-08",
+      "2026-12-10",
+      "2026-12-11",
+      "2026-12-21",
+      "2026-12-30"
+    ]
+  },
+  "observed_date_taipei": "2026-11-28",
+  "bytes": 6784,
+  "sha256": "9f27ae5dc2a412cd691964050637727d63941fe97857fb6a6ebfcba94519b0f6",
+  "rows": 25,
+  "fields": [
+    "Date",
+    "Code",
+    "Name",
+    "Exdividend",
+    "StockDividendRatio",
+    "SubscriptionRatio",
+    "SubscriptionPricePerShare",
+    "CashDividend",
+    "SharesOffered",
+    "SharesEmpOwner",
+    "SharesholderOwner",
+    "StockHoldingRatio"
+  ],
+  "raw_path": "observations/2026-11-28/TWSE-TWT48U_ALL/9f27ae5dc2a412cd691964050637727d63941fe97857fb6a6ebfcba94519b0f6.json",
+  "http_status": 200,
+  "retrieved_at_utc": "2026-11-27T21:33:33.295218+00:00",
+  "headers": {
+    "date": "Fri, 27 Nov 2026 21:33:33 GMT",
+    "last-modified": "Thu, 26 Nov 2026 21:29:02 GMT",
+    "etag": "\"6b08a49e-1a80\"",
+    "content-type": "application/json",
+    "content-length": "6784"
+  }
+}
